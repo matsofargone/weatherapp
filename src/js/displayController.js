@@ -32,6 +32,7 @@ const displayPage = function(){
     col1.setAttribute('class', 'col-sm');
     formGroup.setAttribute('class', 'form-group');
     inputGroup.setAttribute('class', 'input-group');
+    inputGroup.setAttribute('id', 'inputs');
     input.setAttribute('class', 'form-control input-group');
     input.setAttribute('required', 'required');
     input.setAttribute('id', 'form-input');
@@ -67,7 +68,7 @@ const displayCard = function(location, temperature, condition, image) {
     const icon = new Image();
     icon.src = image;
     icon.alt = 'Weather Icon';
-    card.setAttribute('class', 'card m-4 ');
+    card.setAttribute('class', 'card m-4 text-center');
     cardHeaderDiv.setAttribute('class','card-header display-6 text-uppercase fw-bold');
     cardBodyDiv.setAttribute('class','card-body');
     h5.setAttribute('class', 'card-title');
@@ -90,4 +91,32 @@ const displayCard = function(location, temperature, condition, image) {
 
 }
 
-export  {displayPage, displayCard};
+const loading = function() {
+    const displayDiv = document.getElementById('content');
+    const loader = document.createElement('div');
+    const span = document.createElement('span');
+
+    loader.setAttribute('class', 'spinner-border text-secondary ms-4');
+    loader.setAttribute('role','status');
+    loader.setAttribute('id','loader');
+    span.setAttribute('class','visually-hidden');
+    span.innerText = 'Loading...';
+
+    loader.appendChild(span);
+   displayDiv.appendChild(loader);
+
+
+}
+
+const hideLoading = function() {
+    const loader = document.getElementById('loader');
+    loader.classList.remove('spinner-border');
+    loader.classList.remove('text-secondary');
+}
+
+
+// const displayAlert = function(){
+//     //In the future can make custom popup 
+// }
+
+export  {displayPage, displayCard, loading, hideLoading};

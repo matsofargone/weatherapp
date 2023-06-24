@@ -4,12 +4,13 @@ import '../scss/style.scss';
 // Import all of Bootstrap's JS
 import * as bootstrap from 'bootstrap';
 import getWeather from './weather';
-import {displayPage ,displayCard} from './displayController';
+import {displayPage , loading, hideLoading} from './displayController';
 
 
 displayPage();
 
-//TODO display fetched values in card 
+//TODO Loading mechanisim 
+
 
 
 
@@ -18,8 +19,14 @@ const form = document.getElementById('weather-form');
 form.addEventListener('submit', function(e){
     const input = document.getElementById('form-input');
     const displaydiv = document.getElementById('display-div');
+    // const hideloadingTimeoutID = setTimeout(hideLoading, 2000);
     displaydiv.innerHTML = '';
-    displayCard(input.value ,'25', 'test');
+    // loading();
+    getWeather(input.value);
+    
+
+    
+    
     input.value = '';
     
     
